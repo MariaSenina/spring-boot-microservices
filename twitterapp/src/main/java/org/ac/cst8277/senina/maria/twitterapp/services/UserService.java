@@ -1,5 +1,6 @@
 package org.ac.cst8277.senina.maria.twitterapp.services;
 
+import org.ac.cst8277.senina.maria.twitterapp.dtos.UserDto;
 import org.ac.cst8277.senina.maria.twitterapp.entities.User;
 import org.ac.cst8277.senina.maria.twitterapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,16 @@ public class UserService {
 
     public List<User> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    public User addUser(UserDto userDto) {
+        User user = new User();
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setEmail(userDto.getEmail());
+        user.setUsername(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+
+        return userRepository.save(user);
     }
 }
