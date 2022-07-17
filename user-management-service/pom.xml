@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.ac.cst8277.senina.maria</groupId>
-	<artifactId>twitterapp</artifactId>
+	<artifactId>user-management-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>twitterapp</name>
+	<name>user-management-service</name>
 	<description>Twittler-like Spring Boot Application</description>
 	<properties>
 		<java.version>11</java.version>
