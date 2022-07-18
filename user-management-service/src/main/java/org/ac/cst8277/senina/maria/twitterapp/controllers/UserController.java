@@ -1,7 +1,7 @@
 package org.ac.cst8277.senina.maria.twitterapp.controllers;
 
+import org.ac.cst8277.senina.maria.twitterapp.dtos.SubscriptionsResponseDto;
 import org.ac.cst8277.senina.maria.twitterapp.dtos.UserDto;
-import org.ac.cst8277.senina.maria.twitterapp.entities.Subscription;
 import org.ac.cst8277.senina.maria.twitterapp.entities.User;
 import org.ac.cst8277.senina.maria.twitterapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/subscriptions")
-    public List<Subscription> findSubscriptionsByUserId(@PathVariable Integer id) {
+    public SubscriptionsResponseDto findSubscriptionsByUserId(@PathVariable Integer id) {
         return userService.findSubscriptionsByUserId(id);
     }
 

@@ -1,7 +1,7 @@
 package org.ac.cst8277.senina.maria.twitterapp.services;
 
+import org.ac.cst8277.senina.maria.twitterapp.dtos.SubscriptionsResponseDto;
 import org.ac.cst8277.senina.maria.twitterapp.dtos.UserDto;
-import org.ac.cst8277.senina.maria.twitterapp.entities.Subscription;
 import org.ac.cst8277.senina.maria.twitterapp.entities.User;
 import org.ac.cst8277.senina.maria.twitterapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +27,11 @@ public class UserService {
                         new EntityNotFoundException("User with email: " + email + " and password: " + password + " not found") );
     }
 
-    public List<Subscription> findSubscriptionsByUserId(int id) {
-        return subscriptionService.findSubscriptionsByUserId(id);
+    public SubscriptionsResponseDto findSubscriptionsByUserId(int id) {
+        SubscriptionsResponseDto responseDto = new SubscriptionsResponseDto();
+        responseDto.setSubscriptions(subscriptionService.findSubscriptionsByUserId(id));
+
+        return responseDto;
     }
 
     public List<User> findAllUsers() {
