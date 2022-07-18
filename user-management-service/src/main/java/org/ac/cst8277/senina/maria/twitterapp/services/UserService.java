@@ -7,8 +7,7 @@ import org.ac.cst8277.senina.maria.twitterapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -21,10 +20,8 @@ public class UserService {
         this.subscriptionService = subscriptionService;
     }
 
-    public User findByEmailAndPassword(String email, String password) {
-        return userRepository.findByEmailAndPassword(email, password)
-                .orElseThrow( () ->
-                        new EntityNotFoundException("User with email: " + email + " and password: " + password + " not found") );
+    public Optional<User> findByEmailAndPassword(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password);
     }
 
     public SubscriptionsResponseDto findSubscriptionsByUserId(int id) {

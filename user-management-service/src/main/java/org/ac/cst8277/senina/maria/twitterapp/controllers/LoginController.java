@@ -1,23 +1,33 @@
 package org.ac.cst8277.senina.maria.twitterapp.controllers;
 
+import org.ac.cst8277.senina.maria.twitterapp.dtos.ErrorResponseDto;
 import org.ac.cst8277.senina.maria.twitterapp.dtos.LoginRequestDto;
+import org.ac.cst8277.senina.maria.twitterapp.dtos.TokenResponseDto;
 import org.ac.cst8277.senina.maria.twitterapp.entities.User;
+import org.ac.cst8277.senina.maria.twitterapp.services.AuthService;
 import org.ac.cst8277.senina.maria.twitterapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/")
 public class LoginController {
     private UserService loginService;
+    private AuthService authService;
 
     @Autowired
-    public LoginController(UserService loginService) {
+    public LoginController(UserService loginService, AuthService authService) {
         this.loginService = loginService;
+        this.authService = authService;
     }
 
     @GetMapping
@@ -26,10 +36,21 @@ public class LoginController {
     }
 
     @PostMapping
-    public String doLogin(LoginRequestDto requestDto, Model model) {
-        User user = loginService.findByEmailAndPassword(requestDto.getEmail(), requestDto.getPassword());
-        model.addAttribute("user", user);
+    @ResponseBody
+    public ResponseEntity<Object> doLogin(LoginRequestDto requestDto) {
+        Optional<User> user = loginService.findByEmailAndPassword(requestDto.getEmail(), requestDto.getPassword());
+        ResponseEntity<Object> response;
 
-        return "userHome";
+        if (user.isPresent()) {
+            String token = UUID.randomUUID().toString();
+            authService.setTokenForUser(user.get().getId(), token);
+            TokenResponseDto responseDto = new TokenResponseDto();
+            responseDto.setToken(token);
+            response = ResponseEntity.ok().body(responseDto);
+        } else {
+            response = ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponseDto("login failed - unauthorized"));
+        }
+
+        return response;
     }
 }
