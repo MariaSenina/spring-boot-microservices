@@ -1,11 +1,11 @@
-package org.ac.cst8277.senina.maria.twitterapp.controllers;
+package org.ac.cst8277.senina.maria.usermanagementservice.controllers;
 
-import org.ac.cst8277.senina.maria.twitterapp.dtos.ErrorResponseDto;
-import org.ac.cst8277.senina.maria.twitterapp.dtos.LoginRequestDto;
-import org.ac.cst8277.senina.maria.twitterapp.dtos.TokenResponseDto;
-import org.ac.cst8277.senina.maria.twitterapp.entities.User;
-import org.ac.cst8277.senina.maria.twitterapp.services.AuthService;
-import org.ac.cst8277.senina.maria.twitterapp.services.UserService;
+import org.ac.cst8277.senina.maria.usermanagementservice.dtos.ErrorResponseDto;
+import org.ac.cst8277.senina.maria.usermanagementservice.dtos.LoginRequestDto;
+import org.ac.cst8277.senina.maria.usermanagementservice.dtos.TokenResponseDto;
+import org.ac.cst8277.senina.maria.usermanagementservice.entities.User;
+import org.ac.cst8277.senina.maria.usermanagementservice.services.AuthService;
+import org.ac.cst8277.senina.maria.usermanagementservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

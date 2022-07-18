@@ -1,4 +1,4 @@
-package org.ac.cst8277.senina.maria.twitterapp.services;
+package org.ac.cst8277.senina.maria.usermanagementservice.services;
 
 import org.springframework.stereotype.Service;
 

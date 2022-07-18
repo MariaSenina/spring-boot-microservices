@@ -1,9 +1,9 @@
-package org.ac.cst8277.senina.maria.twitterapp.controllers;
+package org.ac.cst8277.senina.maria.usermanagementservice.controllers;
 
-import org.ac.cst8277.senina.maria.twitterapp.dtos.SubscriptionsResponseDto;
-import org.ac.cst8277.senina.maria.twitterapp.dtos.UserDto;
-import org.ac.cst8277.senina.maria.twitterapp.entities.User;
-import org.ac.cst8277.senina.maria.twitterapp.services.UserService;
+import org.ac.cst8277.senina.maria.usermanagementservice.dtos.SubscriptionsResponseDto;
+import org.ac.cst8277.senina.maria.usermanagementservice.dtos.UserDto;
+import org.ac.cst8277.senina.maria.usermanagementservice.entities.User;
+import org.ac.cst8277.senina.maria.usermanagementservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
-package org.ac.cst8277.senina.maria.twitterapp.services;
+package org.ac.cst8277.senina.maria.usermanagementservice.services;
 
-import org.ac.cst8277.senina.maria.twitterapp.entities.Subscription;
-import org.ac.cst8277.senina.maria.twitterapp.repositories.SubscriptionRepository;
+import org.ac.cst8277.senina.maria.usermanagementservice.entities.Subscription;
+import org.ac.cst8277.senina.maria.usermanagementservice.repositories.SubscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

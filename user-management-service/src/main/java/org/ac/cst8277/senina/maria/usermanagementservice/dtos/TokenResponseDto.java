@@ -1,4 +1,4 @@
-package org.ac.cst8277.senina.maria.twitterapp.dtos;
+package org.ac.cst8277.senina.maria.usermanagementservice.dtos;
 
 public class TokenResponseDto {
     private String token;

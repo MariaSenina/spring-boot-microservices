@@ -1,7 +1,7 @@
-package org.ac.cst8277.senina.maria.twitterapp.services;
+package org.ac.cst8277.senina.maria.usermanagementservice.services;
 
-import org.ac.cst8277.senina.maria.twitterapp.entities.Role;
-import org.ac.cst8277.senina.maria.twitterapp.repositories.RoleRepository;
+import org.ac.cst8277.senina.maria.usermanagementservice.entities.Role;
+import org.ac.cst8277.senina.maria.usermanagementservice.repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

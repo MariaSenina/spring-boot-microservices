@@ -1,4 +1,4 @@
-package org.ac.cst8277.senina.maria.twitterapp.entities;
+package org.ac.cst8277.senina.maria.usermanagementservice.entities;
 
 import javax.persistence.*;
 

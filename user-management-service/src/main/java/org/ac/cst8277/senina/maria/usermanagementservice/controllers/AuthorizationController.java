@@ -1,6 +1,6 @@
-package org.ac.cst8277.senina.maria.twitterapp.controllers;
+package org.ac.cst8277.senina.maria.usermanagementservice.controllers;
 
-import org.ac.cst8277.senina.maria.twitterapp.services.AuthService;
+import org.ac.cst8277.senina.maria.usermanagementservice.services.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

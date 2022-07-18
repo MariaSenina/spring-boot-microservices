@@ -1,27 +1,11 @@
-package org.ac.cst8277.senina.maria.twitterapp.entities;
+package org.ac.cst8277.senina.maria.usermanagementservice.dtos;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class UserDto {
     private String firstName;
     private String lastName;
     private String email;
     private String username;
-    @Column(name = "passwd")
     private String password;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -65,9 +49,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
+        return "UserDto{" +
+                "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +

@@ -1,6 +1,6 @@
-package org.ac.cst8277.senina.maria.twitterapp.dtos;
+package org.ac.cst8277.senina.maria.usermanagementservice.dtos;
 
-import org.ac.cst8277.senina.maria.twitterapp.entities.Subscription;
+import org.ac.cst8277.senina.maria.usermanagementservice.entities.Subscription;
 
 import java.util.List;
 
