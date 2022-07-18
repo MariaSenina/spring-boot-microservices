@@ -16,4 +16,9 @@ public class AuthService {
     public void setTokenForUser(Integer userId, String token) {
         userTokens.put(userId, token);
     }
+
+    public boolean authorize(Integer userid, String token) {
+        String validToken = userTokens.get(userid);
+        return token.equals(validToken);
+    }
 }
