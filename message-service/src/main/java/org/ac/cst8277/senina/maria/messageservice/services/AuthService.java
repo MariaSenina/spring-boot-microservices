@@ -15,6 +15,14 @@ public class AuthService {
     }
 
     public HttpStatus authorizeUser(Integer id, String token) {
-        return userRepository.authorize(id, token);
+        HttpStatus responseStatus;
+
+        if (id == null || token == null || token.isEmpty()) {
+            responseStatus = HttpStatus.BAD_REQUEST;
+        } else {
+            responseStatus = userRepository.authorize(id, token);
+        }
+
+        return responseStatus;
     }
 }
