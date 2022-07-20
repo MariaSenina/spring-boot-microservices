@@ -47,7 +47,17 @@ public class MessageController {
     }
 
     @GetMapping("/subscriber/{id}")
-    public MessagesResponseDto findMessagesForSubscriber(@PathVariable Integer id) {
-        return messageService.findMessagesForSubscriber(id);
+    public ResponseEntity<Object> findMessagesForSubscriber(@PathVariable Integer id,
+                                                         @RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
+        ResponseEntity<Object> response;
+        HttpStatus responseStatus = authService.authorizeUser(id, token);
+        if (responseStatus == HttpStatus.OK) {
+            response = ResponseEntity.ok().body(messageService.findMessagesForSubscriber(id));
+        } else {
+            response = ResponseEntity.status(responseStatus)
+                    .body(new ErrorResponseDto(responseStatus.getReasonPhrase().toLowerCase()));
+        }
+
+        return response;
     }
 }
