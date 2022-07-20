@@ -21,22 +21,21 @@ public class MessageService {
         this.userRepository = userRepository;
     }
 
-    public List<Message> findAllMessages() {
-        return messageRepository.findAll();
+    public MessagesResponseDto findAllMessages() {
+        List<Message> messages = new ArrayList();
+        messageRepository.findAll().forEach(message -> messages.add(message));
+
+        return mapToMessagesResponseDto(messages);
     }
 
     public MessagesResponseDto findAllMessagesForProducer(int id) {
-        MessagesResponseDto responseDto = new MessagesResponseDto();
         List<Message> messages = new ArrayList();
-
         messageRepository.findAllMessagesByProducerId(id).forEach(message -> messages.add(message));
-        responseDto.setMessages(messages);
 
-        return responseDto;
+        return mapToMessagesResponseDto(messages);
     }
 
     public MessagesResponseDto findMessagesForSubscriber(Integer id) {
-        MessagesResponseDto responseDto = new MessagesResponseDto();
         List<Message> messages = new ArrayList();
 
         userRepository.findSubscriptionsByUserId(id)
@@ -44,6 +43,12 @@ public class MessageService {
                     int producerId = subscription.getProducerId();
                     messageRepository.findAllMessagesByProducerId(producerId).forEach(message -> messages.add(message));
                 });
+
+        return mapToMessagesResponseDto(messages);
+    }
+
+    private MessagesResponseDto mapToMessagesResponseDto(List<Message> messages) {
+        MessagesResponseDto responseDto = new MessagesResponseDto();
         responseDto.setMessages(messages);
 
         return responseDto;

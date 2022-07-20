@@ -26,7 +26,7 @@ public class MessageController {
     }
 
     @GetMapping
-    public List<Message> findAllMessages() {
+    public MessagesResponseDto findAllMessages() {
         return messageService.findAllMessages();
     }
 
