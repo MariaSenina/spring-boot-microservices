@@ -25,8 +25,14 @@ public class MessageService {
         return messageRepository.findAll();
     }
 
-    public List<Message> findAllMessagesForProducer(int id) {
-        return messageRepository.findAllMessagesByProducerId(id);
+    public MessagesResponseDto findAllMessagesForProducer(int id) {
+        MessagesResponseDto responseDto = new MessagesResponseDto();
+        List<Message> messages = new ArrayList();
+
+        messageRepository.findAllMessagesByProducerId(id).forEach(message -> messages.add(message));
+        responseDto.setMessages(messages);
+
+        return responseDto;
     }
 
     public MessagesResponseDto findMessagesForSubscriber(Integer id) {
